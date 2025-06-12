@@ -37,7 +37,7 @@ transacciones (por ejemplo: GRUPO A hasta GRUPO H).
 
 ## 🍽️ Procedimiento para la Ejecución: Simulación de Restaurante
 
-Para ejemplificar la funcionalidad del programa, simulamos el trabajo de **meseros armando salas en un restaurante**. Cada mesero es responsable de construir salas compuestas por 15 mesas, y la carga total de trabajo se distribuye equitativamente entre ellos.
+Para ejemplificar la funcionalidad del programa, simulamos el trabajo de **meseros armando salas en un restaurante**. Cada mesero es responsable de construir salas compuestas por 15 mesas, y la carga total de trabajo se distribuye entre ellos.
 
 1.  **Versión con `fork()` y memoria compartida (`mmap`)**.
 2.  **Versión con `pthread` y `mutex` para sincronización**.
@@ -94,7 +94,6 @@ Ambas versiones del programa, al finalizar su ejecución, mostrarán una tabla d
 ---
 
 ## 🎯 Conclusiones
-Se realizó una comparación exhaustiva de ambas implementaciones para analizar su rendimiento y aplicabilidad.
 
 ### Comparación de Tiempos de Ejecución
 Ambos programas cumplen la misma tarea: dividir un total de 30,000 mesas entre 4 meseros, lo que equivale a armar 2000 salas (30,000 mesas / 15 mesas por sala). Se observó que, en general, los **hilos (`pthread`)** resultaron ser más rápidos que los **procesos (`fork`)**, especialmente en tareas que implican memoria compartida y requieren menos aislamiento entre las unidades de ejecución.
@@ -114,11 +113,11 @@ La siguiente tabla resume las principales diferencias entre `fork()` (procesos) 
 ---
 
 ### ¿En qué casos conviene usar Procesos y en cuáles Hilos?
-La elección entre procesos e hilos depende de los requisitos específicos de tu aplicación:
+La elección entre procesos e hilos depende de los requisitos específicos del programa que se vaya a implementar
 
 **Usar procesos (`fork`) cuando:**
 * Se necesita **aislamiento completo** entre tareas.
-* Las tareas son completamente **independientes** y no comparten memoria de forma inherente.
+* Las tareas son completamente **independientes** y no comparten memoria.
 
 **Usar hilos (`pthread`) cuando:**
 * Las tareas necesitan **memoria compartida** para una comunicación eficiente.
@@ -127,7 +126,7 @@ La elección entre procesos e hilos depende de los requisitos específicos de tu
 ---
 
 ### Problemas de Sincronización Encontrados y Cómo se Resolvieron
-Uno de los problemas que se encontraron fueron:
+Uno de los problemas que se encontraron en las diferentes procesos fueron:
 
 ✅ **En la versión con procesos (`fork`)**
 * **Problema:** Al ser procesos separados, cada uno opera en su propio espacio de memoria. Para obtener un conteo global de las salas armadas, fue necesario implementar memoria compartida utilizando `mmap`.
