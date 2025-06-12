@@ -128,10 +128,10 @@ La elección entre procesos e hilos depende de los requisitos específicos del p
 ### Problemas de Sincronización Encontrados y Cómo se Resolvieron
 Uno de los problemas que se encontraron en las diferentes procesos fueron:
 
-✅ **En la versión con procesos (`fork`)**
+⚠️ **En la versión con procesos (`fork`)**
 * **Problema:** Al ser procesos separados, cada uno opera en su propio espacio de memoria. Para obtener un conteo global de las salas armadas, fue necesario implementar memoria compartida utilizando `mmap`.
 * **Solución:** Se empleó la operación atómica `__sync_fetch_and_add`. Esto garantizó que la variable `salasArmadas` se incrementara correctamente sin que se produjeran condiciones de carrera, asegurando la consistencia de los datos entre los procesos.
 
-✅ **En la versión con hilos (`pthread`)**
+⚠️ **En la versión con hilos (`pthread`)**
 * **Problema:** Todos los hilos comparten la misma variable global `salasArmadasGlobal`. Si múltiples hilos intentan modificarla simultáneamente, pueden surgir condiciones de carrera que lleven a inconsistencias en los datos.
 * **Solución:** Se utilizó un `pthread_mutex_t` para proteger la sección crítica donde se actualiza la variable global. El mutex asegura que solo un hilo a la vez pueda modificar `salasArmadasGlobal`, previniendo así las inconsistencias y garantizando la integridad de los datos.
