@@ -12,7 +12,7 @@
 * Jarvin Rios
 ---
 
-## 📝 Problema
+## Problema
 
 Desarrollar dos versiones de un programa en C que procese 
 un conjunto de transacciones simuladas (pueden representar 
@@ -35,7 +35,7 @@ transacciones (por ejemplo: GRUPO A hasta GRUPO H).
 
 ---
 
-## 🍽️ Procedimiento para la Ejecución: Simulación de Restaurante
+## Procedimiento para la Ejecución: Simulación de Restaurante
 
 Para ejemplificar la funcionalidad del programa, simulamos el trabajo de **meseros armando salas en un restaurante**. Cada mesero es responsable de construir salas compuestas por 15 mesas, y la carga total de trabajo se distribuye entre ellos.
 
@@ -53,7 +53,7 @@ Asegúrate de cumplir con los siguientes requisitos:
 
 ---
 
-## 📂 Archivos del Proyecto
+## Archivos del Proyecto
 
 Encontrarás los siguientes archivos en el repositorio:
 
@@ -62,7 +62,7 @@ Encontrarás los siguientes archivos en el repositorio:
 
 ---
 
-## ⚙️ Compilación y Ejecución
+## Compilación y Ejecución
 
 Para compilar y ejecutar el programa, sigue las instrucciones según la versión que desees probar:
 
@@ -80,7 +80,7 @@ gcc versionmultihilo.c -o versionmultihilo -lpthread
 ./versionmultihilo
 ```
 
-## 📊 Resultado Esperado
+## Resultado Esperado
 Ambas versiones del programa, al finalizar su ejecución, mostrarán una tabla detallada con la siguiente información para cada mesero (proceso o hilo):
 
 | Información | Detalle |
@@ -93,7 +93,7 @@ Ambas versiones del programa, al finalizar su ejecución, mostrarán una tabla d
 
 ---
 
-## 🎯 Conclusiones
+## Conclusiones
 
 ### Comparación de Tiempos de Ejecución
 Ambos programas cumplen la misma tarea: dividir un total de 30,000 mesas entre 4 meseros, lo que equivale a armar 2000 salas (30,000 mesas / 15 mesas por sala). Se observó que, en general, los **hilos (`pthread`)** resultaron ser más rápidos que los **procesos (`fork`)**, especialmente en tareas que implican memoria compartida y requieren menos aislamiento entre las unidades de ejecución.
@@ -128,10 +128,10 @@ La elección entre procesos e hilos depende de los requisitos específicos del p
 ### Problemas de Sincronización Encontrados y Cómo se Resolvieron
 Uno de los problemas que se encontraron en las diferentes procesos fueron:
 
-⚠️ **En la versión con procesos (`fork`)**
+ **En la versión con procesos (`fork`)**
 * **Problema:** Al ser procesos separados, cada uno opera en su propio espacio de memoria. Para obtener un conteo global de las salas armadas, fue necesario implementar memoria compartida utilizando `mmap`.
 * **Solución:** Se empleó la operación atómica `__sync_fetch_and_add`. Esto garantizó que la variable `salasArmadas` se incrementara correctamente sin que se produjeran condiciones de carrera, asegurando la consistencia de los datos entre los procesos.
 
-⚠️ **En la versión con hilos (`pthread`)**
+ **En la versión con hilos (`pthread`)**
 * **Problema:** Todos los hilos comparten la misma variable global `salasArmadasGlobal`. Si múltiples hilos intentan modificarla simultáneamente, pueden surgir condiciones de carrera que lleven a inconsistencias en los datos.
 * **Solución:** Se utilizó un `pthread_mutex_t` para proteger la sección crítica donde se actualiza la variable global. El mutex asegura que solo un hilo a la vez pueda modificar `salasArmadasGlobal`, previniendo así las inconsistencias y garantizando la integridad de los datos.
