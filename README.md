@@ -57,8 +57,8 @@ Asegúrate de cumplir con los siguientes requisitos:
 
 Encontrarás los siguientes archivos en el repositorio:
 
-* `restaurante_fork.c`: Contiene la implementación de la **versión que usa procesos**.
-* `restaurante_pthread.c`: Contiene la implementación de la **versión que usa hilos**.
+* `versionmonohilo2.c`: Contiene la implementación de la **versión que usa procesos**.
+* `versionmultihilo.c`: Contiene la implementación de la **versión que usa hilos**.
 
 ---
 
@@ -69,15 +69,15 @@ Para compilar y ejecutar el programa, sigue las instrucciones según la versión
 ### Versión con `fork()`
 
 ```bash
-gcc restaurante_fork.c -o restaurante_fork
-./restaurante_fork
+gcc versionmonohilo2.c -o versionmonohilo2
+./versionmonohilo2
 ```
 
 
 ### Versión con pthread:
 ```bash
-gcc restaurante_pthread.c -o restaurante_pthread -lpthread
-./restaurante_pthread
+gcc versionmultihilo.c -o versionmultihilo -lpthread
+./versionmultihilo
 ```
 
 ## 📊 Resultado Esperado
