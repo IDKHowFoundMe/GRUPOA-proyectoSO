@@ -1,3 +1,4 @@
+// Se incluyen las librerías necesarias para manejar entrada/salida, procesos y tiempo
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
