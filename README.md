@@ -1,12 +1,25 @@
 # GRUPOA-proyectoSO: Procesamiento de Transacciones Simuladas
+<div align="center">
+  <img src="https://img.shields.io/badge/Carrera-Ingeniería%20en%20Ciencias%20de%20la%20Computación-blue?style=for-the-badge" alt="Carrera"/>
+  <img src="https://img.shields.io/badge/Grupo-Sistemas%20Operativos-green?style=for-the-badge" alt="Grupo"/>
+</div>
 
-Este proyecto aborda el desarrollo de dos versiones de un programa en C, diseñadas para procesar un conjunto de **transacciones simuladas**. Estas transacciones pueden representar diversas operaciones, como consultas a bases de datos, procesamiento de archivos o cálculos complejos. Ambas versiones están configuradas para manejar los mismos grupos de transacciones (por ejemplo, GRUPO A hasta GRUPO H).
-
+---
+### **Integrantes:**
+* Leandro Alava
+* Cristina Moreno
+* Erick Topanta
+* Jarvin Rios
 ---
 
 ## 📝 Problema
 
-El objetivo es crear dos implementaciones en C que procesen transacciones simuladas. La clave reside en la forma en que cada versión gestiona la concurrencia: una utilizando **procesos** y la otra **hilos**.
+Desarrollar dos versiones de un programa en C que procese 
+un conjunto de transacciones simuladas (pueden representar 
+consultas a una base de datos, procesamiento de archivos, 
+cálculos, etc.). 
+Ambas versiones deben atender los mismos grupos de 
+transacciones (por ejemplo: GRUPO A hasta GRUPO H).
 
 ### Versión 1: Procesos (`fork()`)
 
