@@ -4,6 +4,7 @@
 #include <pthread.h>
 #include <time.h>
 
+// Se definen las constantes principales del restaurante
 #define numMesas 30000
 #define numMeseros 4
 #define mesaSala 15
