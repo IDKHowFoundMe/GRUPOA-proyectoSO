@@ -127,7 +127,7 @@ La elección entre procesos e hilos depende de los requisitos específicos de tu
 ---
 
 ### Problemas de Sincronización Encontrados y Cómo se Resolvieron
-La gestión adecuada de recursos compartidos es fundamental en la programación concurrente. A continuación, se detallan los problemas de sincronización identificados y sus respectivas soluciones en ambas versiones:
+Uno de los problemas que se encontraron fueron:
 
 ✅ **En la versión con procesos (`fork`)**
 * **Problema:** Al ser procesos separados, cada uno opera en su propio espacio de memoria. Para obtener un conteo global de las salas armadas, fue necesario implementar memoria compartida utilizando `mmap`.
