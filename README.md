@@ -96,7 +96,7 @@ Ambas versiones del programa, al finalizar su ejecución, mostrarán una tabla d
 ## Conclusiones
 
 ### Comparación de Tiempos de Ejecución
-Ambos programas cumplen la misma tarea: dividir un total de 30,000 mesas entre 4 meseros, lo que equivale a armar 2000 salas (30,000 mesas / 15 mesas por sala). Se observó que, en general, los **hilos (`pthread`)** resultaron ser más rápidos que los **procesos (`fork`)**, especialmente en tareas que implican memoria compartida y requieren menos aislamiento entre las unidades de ejecución.
+Ambos programas cumplen la misma tarea: dividir un total de 30,000 mesas entre 4 meseros, lo que equivale a armar 2000 salas (30,000 mesas / 15 mesas por sala) y cada mesero debe ayudar armar las 2000 salas por lo tanto cada mesero debe armar 500 salas (20000/4). Se observó que, en general, los **hilos (`pthread`)** resultaron ser más rápidos que los **procesos (`fork`)**, especialmente en tareas que implican memoria compartida y requieren menos aislamiento entre las unidades de ejecución.
 
 ### Diferencias Encontradas
 La siguiente tabla resume las principales diferencias entre `fork()` (procesos) y `pthread` (hilos):
