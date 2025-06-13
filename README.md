@@ -57,7 +57,7 @@ Asegúrate de cumplir con los siguientes requisitos:
 
 Encontrarás los siguientes archivos en el repositorio:
 
-* `versionmonohilo2.c`: Contiene la implementación de la **versión que usa procesos**.
+* `versionmultiproceso2.c`: Contiene la implementación de la **versión que usa procesos**.
 * `versionmultihilo.c`: Contiene la implementación de la **versión que usa hilos**.
 
 ---
@@ -69,8 +69,8 @@ Para compilar y ejecutar el programa, sigue las instrucciones según la versión
 ### Versión con `fork()`
 
 ```bash
-gcc versionmonohilo2.c -o versionmonohilo2
-./versionmonohilo2
+gcc versionmultiproceso2.c -o versionmultiproceso2
+./versionmultiproceso2
 ```
 
 
