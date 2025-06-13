@@ -17,7 +17,7 @@ pthread_mutex_t mutexSalas;
 int salasArmadasGlobal = 0;    // Contador global de salas armadas
 
 // Estructura para pasar argumentos a los hilos
-struct ThreadArgs {
+struct DatosMeseroHilo {
     int idMesero;    // ID del mesero
     int inicioMesa;    // Indice de la primera mesa que atendera
     int finMesa;    // Indice de la última mesa que atendera
@@ -40,7 +40,7 @@ void armarSala(int* contadorMesas, int* contadorSalas) {
 
 // Función que ejecuta cada hilo para atender mesas
 void* atenderMesas(void* argVoid) {
-    struct ThreadArgs* args = (struct ThreadArgs*)argVoid;    // Cast de argumentos
+    struct DatosMeseroHilo* args = (struct DatosMeseroHilo*)argVoid;    // Cast de argumentos
     struct timespec tIni, tFin;    // Variables para medir tiempo
     const char* nombre = nombresMeseros[args->idMesero];    //Nombre del mesero
     unsigned long idHilo = (unsigned long)pthread_self();    // ID del hilo actual
@@ -76,7 +76,7 @@ void* atenderMesas(void* argVoid) {
 
 int main() {
     pthread_t hilos[numMeseros];    // Array para almacenar los hilos
-    struct ThreadArgs args[numMeseros];    //Array para los argumentos de los hilos
+    struct DatosMeseroHilo args[numMeseros];    //Array para los argumentos de los hilos
     struct timespec tiempoInicioGlobal, tiempoFinGlobal;    //Variables para medir tiempo global
 
     pthread_mutex_init(&mutexSalas, NULL);    // Inicializar el mutex
