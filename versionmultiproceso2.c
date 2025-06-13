@@ -15,7 +15,7 @@
 const char* nombresMeseros[] = {"Carlos", "Luis", "María", "Ana"};
 
 // Estructura para compartir datos entre procesos (cantidad de salas armadas)
-struct SharedData {
+struct DatosCompartidos {
     int salasArmadas;
 };
 
@@ -39,7 +39,7 @@ int main() {
     clock_gettime(CLOCK_MONOTONIC, &tiempoInicioGlobal);
 
     // Se reserva memoria compartida para que los procesos puedan sumar las salas
-    struct SharedData* datos = mmap(NULL, sizeof(struct SharedData),
+    struct DatosCompartidos* datos = mmap(NULL, sizeof(struct DatosCompartidos),
                                     PROT_READ | PROT_WRITE,
                                     MAP_SHARED | MAP_ANONYMOUS, -1, 0);
     datos->salasArmadas = 0;        // Al principio no hay salas armadas
@@ -106,6 +106,6 @@ int main() {
     printf("Meseros que trabajaron: %d\n", numMeseros);
     printf("Restaurante CERRADO. Tiempo total: %.6f s\n", duracionTotal);
     // Libera la memoria compartida
-    munmap(datos, sizeof(struct SharedData));
+    munmap(datos, sizeof(struct DatosCompartidos));
     return 0;
 }
