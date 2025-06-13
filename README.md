@@ -76,7 +76,7 @@ gcc versionmonohilo2.c -o versionmonohilo2
 
 ### Versión con pthread:
 ```bash
-gcc versionmultihilo.c -o versionmultihilo -lpthread
+gcc versionmultihilo.c -pthread -o versionmultihilo
 ./versionmultihilo
 ```
 
